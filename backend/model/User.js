@@ -9,6 +9,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: null,
     },
+    college:{
+        type: String,
+        default: null,
+    },
     email: {
         type: String,
         unique: true,
@@ -16,6 +20,18 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
     },
+    problemcount: {
+        type: Number,
+        default: 0,
+    },
+    image: {
+        type: String,
+        default: null,
+    },
+    friends:{
+        type: [String],
+        default: null,
+    }
     
 });
 

@@ -20,10 +20,11 @@ int main() {
 }`);
   const [output, setOutput] = useState('');
   const [verdict, setVerdict] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loadingRun, setLoadingRun] = useState(false);
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/problems/${id}`,{
+    axios.get(`http://localhost:8080/api/problems/${id}`, {
       headers: {
         'Authorization': localStorage.getItem('token') // Attach the token to the request
       }
@@ -39,8 +40,8 @@ int main() {
     };
 
     try {
-      setLoading(true);
-      const { data } = await axios.post(`http://localhost:8080/api/problems/${id}`, payload,{
+      setLoadingRun(true);
+      const { data } = await axios.post(`http://localhost:8080/api/problems/${id}`, payload, {
         headers: {
           'Authorization': localStorage.getItem('token') // Attach the token to the request
         }
@@ -50,7 +51,7 @@ int main() {
     } catch (error) {
       console.error('Error running code:', error);
     } finally {
-      setLoading(false);
+      setLoadingRun(false);
     }
   };
 
@@ -58,12 +59,11 @@ int main() {
     const payload = {
       language: 'cpp',
       code,
-      // userId: 'abc@gmail.com' // Replace this with the actual user ID from your authentication system
     };
 
     try {
-      setLoading(true);
-      const { data } = await axios.post(`http://localhost:8080/api/submissions/${id}`, payload,{
+      setLoadingSubmit(true);
+      const { data } = await axios.post(`http://localhost:8080/api/submissions/${id}`, payload, {
         headers: {
           'Authorization': localStorage.getItem('token') // Attach the token to the request
         }
@@ -72,7 +72,7 @@ int main() {
     } catch (error) {
       console.error('Error submitting code:', error);
     } finally {
-      setLoading(false);
+      setLoadingSubmit(false);
     }
   };
 
@@ -92,6 +92,15 @@ int main() {
         <div className="p-4 bg-gray-100 shadow-md rounded-md overflow-auto" style={{ height: '80vh' }}>
           <h2 className="text-2xl font-bold mb-4">{problem.name}</h2>
           <p>{problem.description}</p>
+          <h3 className="text-xl font-semibold mt-4">Test Cases</h3>
+          {problem.testCases.map((testCase, index) => (
+            <div key={index} className="mt-2 p-2 bg-white rounded shadow">
+              <p><strong>Input:</strong></p>
+              <pre>{testCase.input}</pre>
+              <p><strong>Expected Output:</strong></p>
+              <pre>{testCase.output}</pre>
+            </div>
+          ))}
         </div>
       </ResizableBox>
       <ResizableBox
@@ -134,9 +143,9 @@ int main() {
               onClick={handleRun}
               type="button"
               className="text-center inline-flex items-center text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
-              disabled={loading}
+              disabled={loadingRun}
             >
-              {loading ? (
+              {loadingRun ? (
                 <svg
                   className="animate-spin mr-2 h-5 w-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"
@@ -184,9 +193,9 @@ int main() {
               onClick={handleSubmit}
               type="button"
               className="text-center inline-flex items-center text-white bg-gradient-to-br from-green-500 to-blue-400 hover:bg-gradient-to-bl focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
-              disabled={loading}
+              disabled={loadingSubmit}
             >
-              {loading ? (
+              {loadingSubmit ? (
                 <svg
                   className="animate-spin mr-2 h-5 w-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"

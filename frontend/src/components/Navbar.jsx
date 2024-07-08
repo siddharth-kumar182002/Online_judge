@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext.jsx';
-import axios from 'axios';
 
 const Navbar = () => {
   const { isLoggedIn, logout } = useContext(AuthContext);
@@ -16,24 +15,23 @@ const Navbar = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`http://localhost:8080/api/users/${searchQuery}`, {
-        headers: {
-          'Authorization': localStorage.getItem('token'),
-        }
-      });
       navigate(`/visit/${searchQuery}`);
     } catch (error) {
       console.error('Error searching user:', error);
     }
   };
 
+  const activeClassName = "border-b-2 border-white";
+
   return (
-    <nav className="bg-blue-500 p-4">
+    <nav className="bg-blue-500 p-4 fixed top-0 w-full z-10">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="flex space-x-4">
-          <Link to="/" className="text-white">Home</Link>
-          <Link to="/about-us" className="text-white">About Us</Link>
-          <Link to="/leaderboard" className="text-white">Leaderboard</Link>
+        <div className="flex items-center space-x-4">
+          <h1 className="text-white text-2xl font-bold pr-4">CodingPlanets</h1>
+          <NavLink to="/" className={({ isActive }) => isActive ? `${activeClassName} text-white` : "text-white"}>Home</NavLink>
+          <NavLink to="/about-us" className={({ isActive }) => isActive ? `${activeClassName} text-white` : "text-white"}>About Us</NavLink>
+          <NavLink to="/leaderboard" className={({ isActive }) => isActive ? `${activeClassName} text-white` : "text-white"}>Leaderboard</NavLink>
+          <NavLink to="/friends" className={({ isActive }) => isActive ? `${activeClassName} text-white` : "text-white"}>Friends</NavLink>
         </div>
         <div className="flex items-center space-x-4 ml-auto">
           <form onSubmit={handleSearch} className="flex space-x-4">
@@ -46,9 +44,9 @@ const Navbar = () => {
             />
             <button type="submit" className="bg-white text-blue-500 p-2 rounded">Search</button>
           </form>
-          {!isLoggedIn && <Link to="/login" className="text-white">Login</Link>}
-          {!isLoggedIn && <Link to="/register" className="text-white">Register</Link>}
-          {isLoggedIn && <Link to="/profile" className="text-white">Profile</Link>}
+          {!isLoggedIn && <NavLink to="/login" className={({ isActive }) => isActive ? `${activeClassName} text-white` : "text-white"}>Login</NavLink>}
+          {!isLoggedIn && <NavLink to="/register" className={({ isActive }) => isActive ? `${activeClassName} text-white` : "text-white"}>Register</NavLink>}
+          {isLoggedIn && <NavLink to="/profile" className={({ isActive }) => isActive ? `${activeClassName} text-white` : "text-white"}>Profile</NavLink>}
           {isLoggedIn && <button onClick={handleLogout} className="text-white">Logout</button>}
         </div>
       </div>

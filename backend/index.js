@@ -9,6 +9,9 @@ const submissionRoutes = require("./routes/submissions.js");
 const userRoutes = require("./routes/users.js");
 const verifyToken = require("./middleware/auth.js");
 const leaderboardRoutes = require('./routes/leaderboard');
+const imageRoutes = require('./routes/image.js');
+
+
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -17,6 +20,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use('/uploads', express.static('uploads'));
+app.use('/public', express.static('public'));
 
 DBConnection();
 
@@ -29,6 +34,9 @@ app.use("/api/problems", verifyToken, problemRoutes);
 app.use("/api/submissions", verifyToken, submissionRoutes);
 app.use("/api/users", verifyToken, userRoutes);
 app.use('/api/leaderboard', leaderboardRoutes);
+app.use('/api/image',verifyToken,imageRoutes);
+
+
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);

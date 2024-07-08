@@ -5,6 +5,7 @@ import axios from 'axios';
 const Register = () => {
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
+  const [college, setCollege] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ const Register = () => {
       const response = await axios.post('http://localhost:8080/api/register', {
         firstname,
         lastname,
+        college,
         email,
         password,
       });
@@ -49,6 +51,16 @@ const Register = () => {
               type="text"
               value={lastname}
               onChange={(e) => setLastname(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded mt-2"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700">College</label>
+            <input
+              type="text"
+              value={college}
+              onChange={(e) => setCollege(e.target.value)}
               className="w-full p-2 border border-gray-300 rounded mt-2"
               required
             />

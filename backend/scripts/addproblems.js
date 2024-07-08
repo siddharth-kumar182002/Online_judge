@@ -41,8 +41,8 @@ const addProblems = async () => {
 
         const problems = [
             {
-                name: 'Print N Natural Numbers new ',
-                description: 'Given an integer N, print the first N natural numbers.',
+                name: 'Find a',
+                description: 'Given a set of characters, Print "YES" if "a" is present or else Print "NO"',
                 testCases,
                 solution: '#include <iostream>\nint main() {\n    int n;\n    std::cin >> n;\n    for (int i = 1; i <= n; ++i) {\n        std::cout << i << " ";\n    }\n    return 0;\n}',
             }

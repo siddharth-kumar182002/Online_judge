@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
@@ -15,18 +16,34 @@ const Leaderboard = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center">Leaderboard</h1>
-      <div className="mt-8 text-center">
-        <h2 className="text-2xl font-semibold">Top Coders</h2>
-        <ul className="mt-4">
-          {leaderboard.map((user, index) => (
-            <li key={user.user._id} className="mb-4 p-4 border rounded shadow-sm">
-              <div className="text-lg font-medium">{index + 1}. {user.user}</div>
-              <div className="text-sm text-gray-600">Solved: {user.solvedCount} problems</div>
-            </li>
-          ))}
-        </ul>
+    <div className="min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('http://localhost:8080/public/planets.jpg')" }}>
+      <div className="container mx-auto p-4 flex justify-center"> {/* Center the container */}
+        <div className="bg-blue-100 text-black shadow-md rounded-lg p-6 overflow-y-auto" style={{ maxWidth: '600px' }}> {/* Set max width for the container */}
+          <h1 className="text-3xl font-bold text-center mb-4">Leaderboard</h1>
+          <div className="mt-8 text-center">
+            <h2 className="text-2xl font-semibold">Top Coders</h2>
+            <table className="table-auto w-full mt-4 text-center"> {/* Centered table content */}
+              <thead>
+                <tr>
+                  <th className="px-4 py-2">Rank</th>
+                  <th className="px-4 py-2">Name</th>
+                  <th className="px-4 py-2">Solved Problems</th>
+                </tr>
+              </thead>
+              <tbody>
+                {leaderboard.map((user, index) => (
+                  <tr key={user.user} className="mb-4 p-4 border rounded shadow-sm">
+                    <td className="border px-4 py-2">{index + 1}</td>
+                    <td className="border px-4 py-2">
+                      <Link to={`/visit/${user.user}`} className="text-lg font-medium">{user.user}</Link>
+                    </td>
+                    <td className="border px-4 py-2 text-gray-600">{user.solvedCount}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   );

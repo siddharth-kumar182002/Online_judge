@@ -7,9 +7,9 @@ const router = express.Router();
 
 router.post("/register", async (req, res) => {
     try {
-        const { firstname, lastname, email, password } = req.body;
+        const { firstname, lastname, college,email, password } = req.body;
 
-        if (!(firstname && lastname && email && password)) {
+        if (!(firstname && lastname && college && email && password)) {
             return res.status(400).send("Please enter all the information");
         }
 
@@ -23,6 +23,7 @@ router.post("/register", async (req, res) => {
         const user = await User.create({
             firstname,
             lastname,
+            college,
             email,
             password: hashedPassword,
         });

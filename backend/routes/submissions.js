@@ -17,6 +17,7 @@ router.get("/", async (req, res) => {
         const submissions = await Submission.find({ userId: req.userId }).populate('problemId');
        
         res.json({ user, submissions });
+        console.log(submissions);
     } catch (error) {
         console.error("Error fetching user submissions:", error);
         res.status(500).send("Server Error");
@@ -66,7 +67,39 @@ router.post("/:id", async (req, res) => {
 
         // Determine the overall success of the submission
         const success = outputs.every(output => output.success);
-
+        if (success) {
+            try {
+                console.log("inside success");
+                const user = await User.findOne({ email: req.userId });
+                if (!user) return res.status(404).json({ message: 'User not found' });
+        
+                const submissions = await Submission.find({ userId: req.userId }).populate('problemId');
+        
+                let f = 0;
+                for (const submission of submissions) {
+                    console.log(submission.problemId._id); // Check the format of submission.problemId._id
+                    console.log(req.params.id); // Ensure req.params.id is in the correct format
+        
+                    // Convert submission.problemId._id to string if necessary
+                    const submissionProblemId = submission.problemId._id.toString();
+                    console.log(submissionProblemId);
+                    if (submission.verdict === 'Accepted' && submissionProblemId === req.params.id) {
+                        f = 1;
+                        break; t
+                    }
+                }
+        
+                if (f == 0) {
+                    user.problemcount += 1;
+                    await user.save();
+                }
+        
+            } catch (err) {
+                res.status(500).json({ message: 'Error uploading code', error: err.message });
+            }
+        }
+        
+        
         // Save the submission to the database
         const submission = new Submission({
             userId: req.userId,
@@ -77,6 +110,7 @@ router.post("/:id", async (req, res) => {
 
         await submission.save();
 
+        
         res.json({
             filePath,
             outputs,
