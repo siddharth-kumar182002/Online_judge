@@ -16,6 +16,11 @@ const ProblemDetails = () => {
 using namespace std;
 int main() { 
   std::cout << "Hello World!"; 
+
+
+
+
+
   return 0; 
 }`);
   const [output, setOutput] = useState('');
@@ -48,6 +53,7 @@ int main() {
       });
       setOutput(data.outputs.map(output => `Input:\n${output.input}\nExpected Output:\n${output.expectedOutput}\nActual Output:\n${output.actualOutput}\nSuccess: ${output.success}`).join('\n\n'));
       setVerdict(data.verdict);
+      alert(data.verdict);
     } catch (error) {
       console.error('Error running code:', error);
     } finally {
@@ -69,6 +75,7 @@ int main() {
         }
       });
       setVerdict(data.verdict);
+      alert(data.verdict);
     } catch (error) {
       console.error('Error submitting code:', error);
     } finally {
@@ -113,7 +120,7 @@ int main() {
         className="resizable-box"
       >
         <div className="h-full p-4 bg-gray-100 shadow-md rounded-md flex flex-col items-center">
-          <h1 className="text-3xl font-bold mb-4">AlgoU Online Code Compiler</h1>
+          <h1 className="text-3xl font-bold mb-4">CodingPlanet Compiler</h1>
           <select className="select-box border border-gray-300 rounded-lg py-1.5 px-4 mb-1 focus:outline-none focus:border-indigo-500">
             <option value='cpp'>C++</option>
             <option value='c'>C</option>
@@ -121,7 +128,7 @@ int main() {
             <option value='java'>Java</option>
           </select>
           <br />
-          <div className="bg-gray-100 shadow-md w-full mb-4" style={{ height: '300px', overflowY: 'auto' }}>
+          <div className="bg-gray-100 shadow-md w-full mb-4" style={{overflowY: 'auto' }}>
             <Editor
               value={code}
               onValueChange={code => setCode(code)}
@@ -134,7 +141,7 @@ int main() {
                 border: 'none',
                 backgroundColor: '#f7fafc',
                 height: '100%',
-                overflowY: 'auto'
+                //overflowY: 'auto'
               }}
             />
           </div>

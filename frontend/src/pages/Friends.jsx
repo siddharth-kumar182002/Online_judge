@@ -12,7 +12,10 @@ const Friends = () => {
       }
     })
     .then(response => setLeaderboard(response.data))
-    .catch(error => console.error('Error fetching Friends:', error));
+    .catch(error => {
+      console.error('Error fetching Friends:', error)
+       alert("Login required!")  
+    });
   }, []);
 
   return (

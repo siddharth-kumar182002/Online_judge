@@ -42,6 +42,7 @@ const ProblemSet = () => {
         if (error.response && error.response.status === 401) {
           handleUnauthorized();
         } else {
+          alert("Login required to access problems!");
           console.error('Error fetching submissions:', error);
         }
         

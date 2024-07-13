@@ -15,7 +15,13 @@ const Navbar = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      navigate(`/visit/${searchQuery}`);
+      if(isLoggedIn){
+        navigate(`/visit/${searchQuery}`);
+      }
+      else{
+        alert("Login required");
+      }
+      
     } catch (error) {
       console.error('Error searching user:', error);
     }

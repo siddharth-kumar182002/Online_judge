@@ -51,9 +51,10 @@ const VisitUser = () => {
           'Authorization': localStorage.getItem('token')
         }
       });
-      console.log(response.data.message);
+      alert(response.data.message);
     } catch (error) {
       console.error('Error adding friend:', error);
+      alert(error.response.data.message);
     }
   };
 

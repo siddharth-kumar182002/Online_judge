@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext.jsx';
+import { useNavigate } from 'react-router-dom';
 import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 import { Pie } from 'react-chartjs-2';
@@ -20,7 +21,7 @@ const Profile = () => {
   const [expandedCode, setExpandedCode] = useState({});
 
   const { handleUnauthorized } = useContext(AuthContext);
-
+  const navigate = useNavigate();
   useEffect(() => {
     axios.get('http://localhost:8080/api/submissions', {
       headers: {
@@ -39,11 +40,12 @@ const Profile = () => {
     .catch(error => {
       if (error.response && error.response.status === 401) {
         handleUnauthorized();
+        navigate('/login');
       } else {
         console.error('Error fetching submissions:', error);
       }
     });
-  }, [handleUnauthorized]);
+  }, [handleUnauthorized,navigate]);
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -63,6 +65,7 @@ const Profile = () => {
       setUser({ ...user, image: response.data.imagePath });
     } catch (error) {
       console.error('Error uploading image:', error);
+      alert("Choose image");
     }
   };
 

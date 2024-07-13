@@ -17,16 +17,18 @@ const Login = () => {
         login(response.data.token);
         navigate('/');
       } else {
-        alert(response.data.message);
+        alert(response);
       }
     } catch (error) {
       console.error('Error logging in:', error);
+      alert(error.response.data);
+    
     }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
+    <div className="flex justify-center items-center min-h-screen bg-gray-100"  style={{ backgroundImage: "url('http://localhost:8080/public/landscape.jpg')" }}>
+      <div className="bg-white p-8 rounded shadow-md w-full max-w-md" >
         <h2 className="text-2xl font-bold mb-4">Login</h2>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
