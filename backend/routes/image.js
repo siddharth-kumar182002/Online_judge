@@ -20,7 +20,7 @@ const upload = multer({ storage });
 
 // Route to upload the profile image
 router.post('/upload', verifyToken, upload.single('image'), async (req, res) => {
-    console.log("inside uploads")
+   // console.log("inside uploads")
     try {
         const user = await User.findOne({ email: req.userId });  // Change to findOne
         console.log(user);

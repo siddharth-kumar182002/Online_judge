@@ -1,13 +1,13 @@
 require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
-const { DBConnection } = require("./database/db.js");
-const authRoutes = require("./routes/auth.js");
-const problemRoutes = require("./routes/problems.js");
-const submissionRoutes = require("./routes/submissions.js");
-const userRoutes = require("./routes/users.js");
-const verifyToken = require("./middleware/auth.js");
+const express = require('express');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+const { DBConnection } = require('./database/db.js');
+const authRoutes = require('./routes/auth.js');
+const problemRoutes = require('./routes/problems.js');
+const submissionRoutes = require('./routes/submissions.js');
+const userRoutes = require('./routes/users.js');
+const verifyToken = require('./middleware/auth.js');
 const leaderboardRoutes = require('./routes/leaderboard');
 const imageRoutes = require('./routes/image.js');
 

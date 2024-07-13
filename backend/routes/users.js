@@ -10,15 +10,15 @@ const verifyToken = require("../middleware/auth.js");
 
 
 router.get('/get-friend', verifyToken, async (req, res) => {
-    console.log("inside get friends");
+    //console.log("inside get friends");
     try {
       const user = await User.findOne({ email: req.userId });
-      console.log(user);
+      //console.log(user);
   
       // Create an array of promises to fetch friend data and their problem count
       const friendPromises = user.friends.map(async friendEmail => {
         const friend = await User.findOne({ email: friendEmail });
-               console.log(friend);
+              // console.log(friend);
         // Get the count of solved problems for this friend
         const solvedCount = friend.problemcount;
   
@@ -34,7 +34,7 @@ router.get('/get-friend', verifyToken, async (req, res) => {
       // Sort friends by their solved count in descending order
       const sortedFriends = userFriends.sort((a, b) => b.solvedCount - a.solvedCount);
   
-      console.log(sortedFriends);
+     // console.log(sortedFriends);
       res.json(sortedFriends);
     } catch (error) {
       console.error(error);
@@ -46,8 +46,8 @@ router.get('/get-friend', verifyToken, async (req, res) => {
 
 // Get user by ID
 router.get("/:userId", verifyToken, async (req, res) => {
-    console.log("inside users from search bar");
-    console.log(req.params.userId);
+   // console.log("inside users from search bar");
+   // console.log(req.params.userId);
     try {
         const user = await User.find({email:req.params.userId});
         if (!user) {

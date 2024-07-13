@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const Problem = require("../model/Problem.js");
-const { generateFile } = require("../generateFiles");
-const { compileCpp, executeCpp } = require("../executeCpp");
+const { generateFile } = require("../generateFiles.js");
+const { compileCpp, executeCpp } = require("../executeCpp.js");
 
 // Get all problems
 router.get("/", async (req, res) => {
@@ -59,8 +59,8 @@ router.post("/:id", async (req, res) => {
             const normalizedActualOutput = normalizeOutput(actualOutput);
             const normalizedExpectedOutput = normalizeOutput(expectedOutput);
         
-            console.log(normalizedActualOutput);
-            console.log(normalizedExpectedOutput);
+            //console.log(normalizedActualOutput);
+            //console.log(normalizedExpectedOutput);
         
             return {
                 input,

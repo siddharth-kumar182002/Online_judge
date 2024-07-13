@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
         const submissions = await Submission.find({ userId: req.userId }).populate('problemId');
        
         res.json({ user, submissions });
-        console.log(submissions);
+        //console.log(submissions);
     } catch (error) {
         console.error("Error fetching user submissions:", error);
         res.status(500).send("Server Error");
@@ -77,12 +77,12 @@ router.post("/:id", async (req, res) => {
         
                 let f = 0;
                 for (const submission of submissions) {
-                    console.log(submission.problemId._id); // Check the format of submission.problemId._id
-                    console.log(req.params.id); // Ensure req.params.id is in the correct format
+                    //console.log(submission.problemId._id); // Check the format of submission.problemId._id
+                   // console.log(req.params.id); // Ensure req.params.id is in the correct format
         
                     // Convert submission.problemId._id to string if necessary
                     const submissionProblemId = submission.problemId._id.toString();
-                    console.log(submissionProblemId);
+                    //console.log(submissionProblemId);
                     if (submission.verdict === 'Accepted' && submissionProblemId === req.params.id) {
                         f = 1;
                         break; t
