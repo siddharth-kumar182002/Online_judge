@@ -56,6 +56,7 @@ int main() {
       alert(data.verdict);
     } catch (error) {
       console.error('Error running code:', error);
+      alert(error.response.data.error.stderr);
     } finally {
       setLoadingRun(false);
     }
