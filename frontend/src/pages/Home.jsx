@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import planetsImage from '../assets/planets.jpg';
 
 const Home = () => {
   return (
-    <div className="home-container min-h-screen flex flex-col items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('http://13.233.116.70:8080/public/planets.jpg')" }}>
+    <div className="home-container min-h-screen flex flex-col items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${planetsImage})` }}>
       <h1 className="text-3xl font-bold text-center text-white">Welcome to the CodingPlanet!</h1>
       <div className="mt-8 text-center bg-black bg-opacity-50 p-6 rounded-lg">
         <p className="text-white">
-        Here you can solve problems, compete with others, and improve your skills.
+          Here you can solve problems, compete with others, and improve your skills.
         </p>
         <button className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">
           <Link to="/problem-set">Problem Set</Link>

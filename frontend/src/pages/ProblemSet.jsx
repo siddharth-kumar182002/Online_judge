@@ -2,6 +2,7 @@ import React, { useState, useEffect,useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext.jsx';
+import ufoImage from '../assets/ufo.jpg';
 const ProblemSet = () => {
   const [problems, setProblems] = useState([]);
   const [solvedProblems, setSolvedProblems] = useState([]);
@@ -54,7 +55,7 @@ const ProblemSet = () => {
   }, [handleUnauthorized]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('http://13.233.116.70:8080/public/ufo.jpg')" }}>
+    <div className="min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${ufoImage})` }}>
       <div className="container mx-auto p-4">
         <h1 className="text-3xl font-bold text-center mb-4 text-indigo-800">Problem Set</h1>
         <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6 overflow-y-auto" style={{ maxHeight: '400px' }}>

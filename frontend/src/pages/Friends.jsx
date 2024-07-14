@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import planetsImage from '../assets/planets.jpg';
 const Friends = () => {
   const [leaderboard, setLeaderboard] = useState([]);
 
@@ -19,7 +19,7 @@ const Friends = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('http://13.233.116.70:8080/public/planets.jpg')" }}>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${planetsImage})` }}>
       <div className="max-w-md mx-auto p-4"> {/* Adjust max-width and center with mx-auto */}
         <h1 className="text-3xl font-bold text-center mb-4 text-white">Friends</h1>
         <div className="bg-blue-100 text-black shadow-md rounded-lg p-6 overflow-y-auto"> {/* Styled container */}

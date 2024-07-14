@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext.jsx';
-
+import landscapeImage from '../assets/landscape.jpg';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,7 +27,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100"  style={{ backgroundImage: "url('http://13.233.116.70:8080/public/landscape.jpg')" }}>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100"  style={{ backgroundImage: `url(${landscapeImage})` }}>
       <div className="bg-white p-8 rounded shadow-md w-full max-w-md" >
         <h2 className="text-2xl font-bold mb-4">Login</h2>
         <form onSubmit={handleLogin}>
