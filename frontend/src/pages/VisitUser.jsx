@@ -20,7 +20,7 @@ const VisitUser = () => {
   const [expandedCode, setExpandedCode] = useState({});
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/users/${userId}`, {
+    axios.get(`http://13.233.116.70:8080/api/users/${userId}`, {
       headers: {
         'Authorization': localStorage.getItem('token'),
       }
@@ -46,7 +46,7 @@ const VisitUser = () => {
 
   const addFriend = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/api/users/add-friend', { friendEmail: user[0].email }, {
+      const response = await axios.post('http://13.233.116.70:8080/api/users/add-friend', { friendEmail: user[0].email }, {
         headers: {
           'Authorization': localStorage.getItem('token')
         }
@@ -62,7 +62,7 @@ const VisitUser = () => {
 
   // Calculate the number of solved problems
   const solvedProblems = user[0].problemcount;
-  const totalProblems = 3;  // Total number of problems
+  const totalProblems = 5;  // Total number of problems
 
   let planetimage;
   if (solvedProblems <= 1) { 
@@ -100,7 +100,7 @@ const VisitUser = () => {
 
 
 <div className="p-5 border rounded text-center text-gray-500 mb-6">
-        <img className="w-32 h-32 rounded-full mx-auto" src={`http://localhost:8080/${user[0].image}`} alt="Profile" />
+        <img className="w-32 h-32 rounded-full mx-auto" src={`http://13.233.116.70:8080/${user[0].image}`} alt="Profile" />
         <div className="text-sm mt-5">
           <p className="font-medium leading-none text-gray-900 hover:text-indigo-600 transition duration-500 ease-in-out">{user[0].firstname} {user[0].lastname}</p>
           <p>{user[0].college}</p>

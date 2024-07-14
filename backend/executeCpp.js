@@ -13,7 +13,7 @@ if (!fs.existsSync(outputPath)) {
 // Function to compile C++ code
 const compileCpp = (filepath) => {
     const jobId = path.basename(filepath).split(".")[0];
-    const outPath = path.join(outputPath, `${jobId}.exe`);
+    const outPath = path.join(outputPath, `${jobId}.out`);
 
     return new Promise((resolve, reject) => {
         exec(`g++ ${filepath} -o ${outPath}`, (error, stdout, stderr) => {

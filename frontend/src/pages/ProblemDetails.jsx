@@ -29,7 +29,7 @@ int main() {
   const [loadingSubmit, setLoadingSubmit] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/problems/${id}`, {
+    axios.get(`http://13.233.116.70:8080/api/problems/${id}`, {
       headers: {
         'Authorization': localStorage.getItem('token') // Attach the token to the request
       }
@@ -46,7 +46,7 @@ int main() {
 
     try {
       setLoadingRun(true);
-      const { data } = await axios.post(`http://localhost:8080/api/problems/${id}`, payload, {
+      const { data } = await axios.post(`http://13.233.116.70:8080/api/problems/${id}`, payload, {
         headers: {
           'Authorization': localStorage.getItem('token') // Attach the token to the request
         }
@@ -69,7 +69,7 @@ int main() {
 
     try {
       setLoadingSubmit(true);
-      const { data } = await axios.post(`http://localhost:8080/api/submissions/${id}`, payload, {
+      const { data } = await axios.post(`http://13.233.116.70:8080/api/submissions/${id}`, payload, {
         headers: {
           'Authorization': localStorage.getItem('token') // Attach the token to the request
         }

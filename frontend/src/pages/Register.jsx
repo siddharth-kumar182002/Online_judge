@@ -13,7 +13,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/api/register', {
+      const response = await axios.post('http://13.233.116.70:8080/api/register', {
         firstname,
         lastname,
         college,
@@ -31,7 +31,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100" style={{ backgroundImage: "url('http://localhost:8080/public/planets.jpg')"}}>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100" style={{ backgroundImage: "url('http://13.233.116.70:8080/public/planets.jpg')"}}>
       <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4">Register</h2>
         <form onSubmit={handleRegister}>

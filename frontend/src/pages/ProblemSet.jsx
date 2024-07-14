@@ -9,7 +9,7 @@ const ProblemSet = () => {
   useEffect(() => {
     const fetchProblems = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/problems', {
+        const response = await axios.get('http://13.233.116.70:8080/api/problems', {
           headers: {
             'Authorization': localStorage.getItem('token') // Attach the token to the request
           }
@@ -28,7 +28,7 @@ const ProblemSet = () => {
 
     const fetchSolvedProblems = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/submissions', {
+        const response = await axios.get('http://13.233.116.70:8080/api/submissions', {
           headers: {
             'Authorization': localStorage.getItem('token') // Attach the token to the request
           }
@@ -54,7 +54,7 @@ const ProblemSet = () => {
   }, [handleUnauthorized]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('http://localhost:8080/public/ufo.jpg')" }}>
+    <div className="min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('http://13.233.116.70:8080/public/ufo.jpg')" }}>
       <div className="container mx-auto p-4">
         <h1 className="text-3xl font-bold text-center mb-4 text-indigo-800">Problem Set</h1>
         <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6 overflow-y-auto" style={{ maxHeight: '400px' }}>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <div className="home-container min-h-screen flex flex-col items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('http://localhost:8080/public/planets.jpg')" }}>
+    <div className="home-container min-h-screen flex flex-col items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('http://13.233.116.70:8080/public/planets.jpg')" }}>
       <h1 className="text-3xl font-bold text-center text-white">Welcome to the CodingPlanet!</h1>
       <div className="mt-8 text-center bg-black bg-opacity-50 p-6 rounded-lg">
         <p className="text-white">

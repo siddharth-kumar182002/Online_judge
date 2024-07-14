@@ -6,7 +6,7 @@ const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/leaderboard', {
+    axios.get('http://13.233.116.70:8080/api/leaderboard', {
       headers: {
         'Authorization': localStorage.getItem('token') // Attach the token to the request
       }
@@ -16,7 +16,7 @@ const Leaderboard = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('http://localhost:8080/public/planets.jpg')" }}>
+    <div className="min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('http://13.233.116.70:8080/public/planets.jpg')" }}>
       <div className="container mx-auto p-4 flex justify-center"> {/* Center the container */}
         <div className="bg-blue-100 text-black shadow-md rounded-lg p-6 overflow-y-auto" style={{ maxWidth: '600px' }}> {/* Set max width for the container */}
           <h1 className="text-3xl font-bold text-center mb-4">Leaderboard</h1>
