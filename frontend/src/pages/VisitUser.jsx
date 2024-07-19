@@ -62,7 +62,7 @@ const VisitUser = () => {
 
   // Calculate the number of solved problems
   const solvedProblems = user[0].problemcount;
-  const totalProblems = 5;  // Total number of problems
+  const totalProblems = 6;  // Total number of problems
 
   let planetimage;
   if (solvedProblems <= 1) { 
