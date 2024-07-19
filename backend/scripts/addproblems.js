@@ -41,8 +41,8 @@ const addProblems = async () => {
 
         const problems = [
             {
-                name: 'table of n',
-                description: 'given n , print i*n where 1<=i<=10 ',
+                name: 'even or odd',
+                description: 'print even if given number is even else print odd',
                 testCases,
                 solution: '#include <iostream>\nint main() {\n    int n;\n    std::cin >> n;\n    for (int i = 1; i <= n; ++i) {\n        std::cout << i << " ";\n    }\n    return 0;\n}',
             }
