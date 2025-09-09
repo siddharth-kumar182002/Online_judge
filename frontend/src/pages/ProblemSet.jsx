@@ -10,7 +10,7 @@ const ProblemSet = () => {
   useEffect(() => {
     const fetchProblems = async () => {
       try {
-        const response = await axios.get('http://13.233.116.70:8080/api/problems', {
+        const response = await axios.get('http://13.126.195.239:8080/api/problems', {
           headers: {
             'Authorization': localStorage.getItem('token') // Attach the token to the request
           }
@@ -29,7 +29,7 @@ const ProblemSet = () => {
 
     const fetchSolvedProblems = async () => {
       try {
-        const response = await axios.get('http://13.233.116.70:8080/api/submissions', {
+        const response = await axios.get('http://13.126.195.239:8080/api/submissions', {
           headers: {
             'Authorization': localStorage.getItem('token') // Attach the token to the request
           }

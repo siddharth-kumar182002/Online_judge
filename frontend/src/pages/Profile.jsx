@@ -23,7 +23,7 @@ const Profile = () => {
   const { handleUnauthorized } = useContext(AuthContext);
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get('http://13.233.116.70:8080/api/submissions', {
+    axios.get('http://13.126.195.239:8080/api/submissions', {//http://13.233.116.70:8080/api
       headers: {
         'Authorization': localStorage.getItem('token') // Attach the token to the request
       }
@@ -56,7 +56,7 @@ const Profile = () => {
     formData.append('image', selectedFile);
 
     try {
-      const response = await axios.post('http://13.233.116.70:8080/api/image/upload', formData, {
+      const response = await axios.post('http://13.126.195.239:8080/api/image/upload', formData, {
         headers: {
           'Authorization': localStorage.getItem('token'),
           'Content-Type': 'multipart/form-data'
@@ -117,7 +117,7 @@ const Profile = () => {
     <div className="container mx-auto p-4 flex flex-wrap bg-blue-100"> {/* Light blue background */}
     
       <div className="p-5 border rounded text-center text-gray-500 mb-6">
-        <img className="w-32 h-32 rounded-full mx-auto" src={`http://13.233.116.70:8080/${user[0].image}`} alt="Profile" />
+        <img className="w-32 h-32 rounded-full mx-auto" src={`http:http://13.126.195.239:8080/${user[0].image}`} alt="Profile" />
         <div className="text-sm mt-5">
           <p className="font-medium leading-none text-gray-900 hover:text-indigo-600 transition duration-500 ease-in-out">{user[0].firstname} {user[0].lastname}</p>
           <p>{user[0].college}</p>

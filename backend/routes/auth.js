@@ -34,6 +34,7 @@ router.post("/register", async (req, res) => {
         user.token = token;
         user.password = undefined;
         res.status(200).json({ message: "You have successfully registered!", user });
+        console.log("hi");
     } catch (error) {
         console.log(error);
     }

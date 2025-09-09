@@ -13,7 +13,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://13.233.116.70:8080/api/register', {
+      const response = await axios.post('http://13.126.195.239:8080/api/register', {
         firstname,
         lastname,
         college,

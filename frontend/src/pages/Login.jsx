@@ -12,7 +12,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://13.233.116.70:8080/api/login', { email, password });
+      const response = await axios.post('http://13.126.195.239:8080/api/login', { email, password });
       if (response.data.success) {
         login(response.data.token);
         navigate('/');

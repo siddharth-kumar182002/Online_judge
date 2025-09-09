@@ -6,7 +6,7 @@ const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
 
   useEffect(() => {
-    axios.get('http://13.233.116.70:8080/api/leaderboard', {
+    axios.get('http://13.126.195.239:8080/api/leaderboard', {
       headers: {
         'Authorization': localStorage.getItem('token') // Attach the token to the request
       }
